@@ -32,6 +32,6 @@ new Elysia()
       message: t.String()
     })
   })
-  .listen(8000, () => {
-    console.log("Server is running on http://localhost:8000");
+  .listen(process.env.PORT || 8000, () => {
+    console.log(`Server is running on http://localhost:${process.env.PORT || 8000}`);
   });
