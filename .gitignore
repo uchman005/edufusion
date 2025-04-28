@@ -1,5 +1,5 @@
 # dependencies (bun install)
-engine/node_modules
+node_modules
 
 # output
 out
@@ -11,24 +11,24 @@ coverage
 *.lcov
 
 # logs
-engine/logs
+logs
 _.log
 report.[0-9]_.[0-9]_.[0-9]_.[0-9]_.json
 
 # dotenv environment variable files
-engine/.env
-engine/.env.development.local
-engine/.env.test.local
-engine/.env.production.local
-engine/.env.local
+.env
+.env.development.local
+.env.test.local
+.env.production.local
+.env.local
 
 # caches
-engine/.eslintcache
-engine/.cache
-engine/*.tsbuildinfo
+.eslintcache
+.cache
+*.tsbuildinfo
 
 # IntelliJ based IDEs
-engine/.idea
-engine/bun.lock
+.idea
+bun.lock
 # Finder (MacOS) folder config
-engine/.DS_Store
+.DS_Store
