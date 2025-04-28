@@ -26,6 +26,7 @@ new Elysia()
     Additional Information: ${message || "None provided"}
   `.trim();
       await sendMail("godwinudu01@gmail.com", name, "New Request", emailBody);
+      return { success: true, message: "Request submitted successfully" };
     },
     {
       body: t.Object({
