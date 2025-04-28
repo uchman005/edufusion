@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyEduFusion - School Management System</title>
+    <!-- Carbon Design System -->
+    <link rel="stylesheet" href="https://unpkg.com/carbon-components/css/carbon-components.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:300,400,500,600,700">
+    <link rel="stylesheet" href="/public/css/styles.css">
+</head>
+
+<body>
+    <!-- Carbon icons sprite -->
+    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+        <!-- User icon -->
+        <symbol id="icon--user" viewBox="0 0 32 32">
+            <path
+                d="M16 4a5 5 0 1 1-5 5 5 5 0 0 1 5-5m0-2a7 7 0 1 0 7 7 7 7 0 0 0-7-7zm10 28h-2v-5a5 5 0 0 0-5-5h-6a5 5 0 0 0-5 5v5H6v-5a7 7 0 0 1 7-7h6a7 7 0 0 1 7 7z" />
+        </symbol>
+        <!-- Education icon -->
+        <symbol id="icon--education" viewBox="0 0 32 32">
+            <path
+                d="M26 30h-2v-3a5 5 0 0 0-5-5h-6a5 5 0 0 0-5 5v3H6v-3a7 7 0 0 1 7-7h6a7 7 0 0 1 7 7zm-10-8a8 8 0 1 1 8-8 8 8 0 0 1-8 8zm0-14a6 6 0 1 0 6 6 6 6 0 0 0-6-6z" />
+        </symbol>
+        <!-- Team icon -->
+        <symbol id="icon--group" viewBox="0 0 32 32">
+            <path
+                d="M31 30h-2v-3a3 3 0 0 0-3-3h-4a3 3 0 0 0-3 3v3h-2v-3a5 5 0 0 1 5-5h4a5 5 0 0 1 5 5zm-7-18a3 3 0 1 1-3 3 3 3 0 0 1 3-3m0-2a5 5 0 1 0 5 5 5 5 0 0 0-5-5zm-9 12h-2v-3a3 3 0 0 0-3-3H6a3 3 0 0 0-3 3v3H1v-3a5 5 0 0 1 5-5h4a5 5 0 0 1 5 5zm-7-6a3 3 0 1 1 3-3 3 3 0 0 1-3 3m0-2a5 5 0 1 0-5-5 5 5 0 0 0 5 5z" />
+        </symbol>
+        <!-- Finance icon -->
+        <symbol id="icon--finance" viewBox="0 0 32 32">
+            <path d="M22 17h2v2h-2zm4-12v24H6V5h20m2-2H4v28h24V3z" />
+            <path d="M14 23h-2V11h2v12m1-14h-4v16h4V9z" />
+            <path d="M20 23h-2V15h2v8m1-10h-4v12h4V13z" />
+            <path d="M26 23h-2V9h2v14m1-16h-4v18h4V7z" />
+        </symbol>
+        <!-- Time icon -->
+        <symbol id="icon--time" viewBox="0 0 32 32">
+            <path d="M16 30a14 14 0 1 1 14-14 14 14 0 0 1-14 14Zm0-26a12 12 0 1 0 12 12A12 12 0 0 0 16 4Z" />
+            <path d="M20.59 22 15 16.41V7h2v8.58l5 5.01L20.59 22z" />
+        </symbol>
+        <!-- Network icon -->
+        <symbol id="icon--network" viewBox="0 0 32 32">
+            <path
+                d="M16 4a5 5 0 1 1-5 5 5 5 0 0 1 5-5m0-2a7 7 0 1 0 7 7 7 7 0 0 0-7-7zm10 28h-2v-5a5 5 0 0 0-5-5h-6a5 5 0 0 0-5 5v5H6v-5a7 7 0 0 1 7-7h6a7 7 0 0 1 7 7z" />
+            <circle cx="26" cy="27" r="2" />
+            <circle cx="6" cy="27" r="2" />
+            <circle cx="26" cy="5" r="2" />
+            <circle cx="6" cy="5" r="2" />
+        </symbol>
+        <!-- Data insights icon -->
+        <symbol id="icon--data--insights" viewBox="0 0 32 32">
+            <path d="M4 2H2v26a2 2 0 0 0 2 2h26v-2H4Z" />
+            <path d="m30 9-6 6-6-6-8 8-4-4v3l4 4 8-8 6 6 6-6v-3z" />
+        </symbol>
+        <!-- Security icon -->
+        <symbol id="icon--security" viewBox="0 0 32 32">
+            <path d="M16 30a14 14 0 1 1 14-14 14 14 0 0 1-14 14Zm0-26a12 12 0 1 0 12 12A12 12 0 0 0 16 4Z" />
+            <path d="M16 24a8 8 0 1 1 8-8 8 8 0 0 1-8 8Zm0-14a6 6 0 1 0 6 6 6 6 0 0 0-6-6Z" />
+            <circle cx="16" cy="16" r="2" />
+        </symbol>
+        <!-- Cloud icon -->
+        <symbol id="icon--cloud" viewBox="0 0 32 32">
+            <path
+                d="M23 16a7 7 0 0 0-13.9 1H9a5 5 0 0 0 0 10h14a5 5 0 0 0 0-10V16zm0 8H9a3 3 0 0 1 0-6h1.1a5 5 0 0 1 4.9-4 5 5 0 0 1 5 4h3a3 3 0 0 1 0 6z" />
+        </symbol>
+        <!-- Cloud services icon -->
+        <symbol id="icon--cloud--services" viewBox="0 0 32 32">
+            <path
+                d="M23 16a7 7 0 0 0-13.9 1H9a5 5 0 0 0 0 10h14a5 5 0 0 0 0-10V16zm0 8H9a3 3 0 0 1 0-6h1.1a5 5 0 0 1 4.9-4 5 5 0 0 1 5 4h3a3 3 0 0 1 0 6z" />
+            <circle cx="9" cy="24" r="1" />
+            <circle cx="23" cy="24" r="1" />
+        </symbol>
+        <!-- Document icon -->
+        <symbol id="icon--document" viewBox="0 0 32 32">
+            <path
+                d="M25.7,9.3l-7-7C18.5,2.1,18.3,2,18,2H8C6.9,2,6,2.9,6,4v24c0,1.1,0.9,2,2,2h16c1.1,0,2-0.9,2-2V10C26,9.7,25.9,9.5,25.7,9.3z M18,4.4l5.6,5.6H18V4.4z M24,28H8V4h8v6c0,1.1,0.9,2,2,2h6V28z" />
+            <path d="M10 20H22V22H10zM10 24H22V26H10zM10 16H22V18H10z" />
+        </symbol>
+        <!-- Money icon -->
+        <symbol id="icon--money" viewBox="0 0 32 32">
+            <path d="M24 22H8c-1.1 0-2-.9-2-2V12c0-1.1.9-2 2-2h16c1.1 0 2 .9 2 2v8c0 1.1-.9 2-2 2zM8 12v8h16v-8H8z" />
+            <path d="M16 18c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm-4-6h8v2h-8z" />
+            <circle cx="16" cy="16" r="1" />
+            <path
+                d="M16 20c-2.2 0-4-1.8-4-4s1.8-4 4-4 4 1.8 4 4-1.8 4-4 4zm0-6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z" />
+        </symbol>
+    </svg>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <img src="/public/assets/MyEduFusion.png" alt="EduManage Logo">
+            </div>
+            <ul class="nav-links">
+                <li><a href="#features">Features</a></li>
+                <li><a href="#benefits">Benefits</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+                <li><a href="#contact" class="cta-button">Request Demo</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="hero">
+            <div class="hero-slider">
+                <div class="slide active" style="background-image: url('/public/assets/Images/Slider_01a.jpg')">
+                    <div class="slide-content">
+                        <h1>Transform Your School's Digital Experience</h1>
+                        <p>The complete management solution trusted by leading Nigerian schools</p>
+                        <div class="hero-cta">
+                            <button class="bx--btn bx--btn--primary">Book a Demo</button>
+                            <button class="bx--btn bx--btn--secondary">Explore Features</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="slide" style="background-image: url('/public/assets/Images/Slider_02.jpg')">
+                    <div class="slide-content">
+                        <h1>Streamline Administrative Tasks</h1>
+                        <p>Reduce workload and increase efficiency with automated processes</p>
+                        <div class="hero-cta">
+                            <button class="bx--btn bx--btn--primary">Book a Demo</button>
+                            <button class="bx--btn bx--btn--secondary">Learn More</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="slide" style="background-image: url('/public/assets/Images/Slider_03.jpg')">
+                    <div class="slide-content">
+                        <h1>Data-Driven Decision Making</h1>
+                        <p>Comprehensive analytics and reporting for better outcomes</p>
+                        <div class="hero-cta">
+                            <button class="bx--btn bx--btn--primary">Book a Demo</button>
+                            <button class="bx--btn bx--btn--secondary">View Features</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="slider-nav">
+                    <button class="slider-dot active" data-slide="0"></button>
+                    <button class="slider-dot" data-slide="1"></button>
+                    <button class="slider-dot" data-slide="2"></button>
+                </div>
+            </div>
+        </section>
+
+        <section id="features">
+            <h2>Comprehensive School Management Features</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg class="bx--icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+                            <path
+                                d="M16 4a5 5 0 1 1-5 5 5 5 0 0 1 5-5m0-2a7 7 0 1 0 7 7 7 7 0 0 0-7-7zm10 28h-2v-5a5 5 0 0 0-5-5h-6a5 5 0 0 0-5 5v5H6v-5a7 7 0 0 1 7-7h6a7 7 0 0 1 7 7z" />
+                        </svg>
+                    </div>
+                    <div class="feature-content">
+                        <h3>Student Information System</h3>
+                        <ul>
+                            <li>Digital student records</li>
+                            <li>Attendance tracking</li>
+                            <li>Academic progress monitoring</li>
+                            <li>Behavior management</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg class="bx--icon">
+                            <use href="#icon--document"></use>
+                        </svg>
+                    </div>
+                    <div class="feature-content">
+                        <h3>Academic Management</h3>
+                        <ul>
+                            <li>Curriculum planning</li>
+                            <li>Assessment management</li>
+                            <li>Report card generation</li>
+                            <li>Homework tracking</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg class="bx--icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+                            <path
+                                d="M31 30h-2v-3a3 3 0 0 0-3-3h-4a3 3 0 0 0-3 3v3h-2v-3a5 5 0 0 1 5-5h4a5 5 0 0 1 5 5zm-7-18a3 3 0 1 1-3 3 3 3 0 0 1 3-3m0-2a5 5 0 1 0 5 5 5 5 0 0 0-5-5zm-9 12h-2v-3a3 3 0 0 0-3-3H6a3 3 0 0 0-3 3v3H1v-3a5 5 0 0 1 5-5h4a5 5 0 0 1 5 5zm-7-6a3 3 0 1 1 3-3 3 3 0 0 1-3 3m0-2a5 5 0 1 0-5-5 5 5 0 0 0 5 5z" />
+                        </svg>
+                    </div>
+                    <div class="feature-content">
+                        <h3>Staff Management</h3>
+                        <ul>
+                            <li>Teacher schedules</li>
+                            <li>Professional development</li>
+                            <li>Performance evaluation</li>
+                            <li>Resource allocation</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg class="bx--icon">
+                            <use href="#icon--money"></use>
+                        </svg>
+                    </div>
+                    <div class="feature-content">
+                        <h3>Financial Management</h3>
+                        <ul>
+                            <li>Fee collection</li>
+                            <li>Budget planning</li>
+                            <li>Expense tracking</li>
+                            <li>Financial reporting</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="benefits">
+            <h2>Why Choose MyEduFusion?</h2>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <svg class="bx--icon">
+                            <use href="#icon--time"></use>
+                        </svg>
+                    </div>
+                    <div class="benefit-content">
+                        <h3>Time-Saving Automation</h3>
+                        <p>Reduce administrative workload by up to 60% with automated processes</p>
+                    </div>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <svg class="bx--icon">
+                            <use href="#icon--network"></use>
+                        </svg>
+                    </div>
+                    <div class="benefit-content">
+                        <h3>Enhanced Communication</h3>
+                        <p>Streamlined communication between staff, students, and parents</p>
+                    </div>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <svg class="bx--icon">
+                            <use href="#icon--data--insights"></use>
+                        </svg>
+                    </div>
+                    <div class="benefit-content">
+                        <h3>Data-Driven Insights</h3>
+                        <p>Make informed decisions with comprehensive analytics and reporting</p>
+                    </div>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <svg class="bx--icon">
+                            <use href="#icon--security"></use>
+                        </svg>
+                    </div>
+                    <div class="benefit-content">
+                        <h3>GDPR Compliant</h3>
+                        <p>Fully compliant with Nigerian data protection regulations</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="testimonials">
+            <h2>Trusted by Nigerian Schools</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <p>"MyEduFusion has transformed how we operate. The efficiency gains have been remarkable."</p>
+                    <cite>- Sarah Thompson, Headteacher, Lagos International Academy</cite>
+                </div>
+                <div class="testimonial-card">
+                    <p>"The support team is exceptional, and the system is incredibly user-friendly."</p>
+                    <cite>- James Wilson, IT Director, Abuja College</cite>
+                </div>
+            </div>
+        </section>
+
+        <section id="trusted-schools">
+            <h2>Our Trusted Schools</h2>
+            <div class="trusted-schools-grid">
+                <div class="school-logo">
+                    <img src="/public/assets/placeholder-logo1.png" alt="Lagos International Academy">
+                    <p>Lagos International Academy</p>
+                </div>
+                <div class="school-logo">
+                    <img src="/public/assets/placeholder-logo2.png" alt="Abuja College">
+                    <p>Abuja College</p>
+                </div>
+                <div class="school-logo">
+                    <img src="/public/assets/placeholder-logo3.png" alt="Heritage School Port Harcourt">
+                    <p>Heritage School Port Harcourt</p>
+                </div>
+                <div class="school-logo">
+                    <img src="/public/assets/placeholder-logo4.png" alt="Sunshine Academy Ibadan">
+                    <p>Sunshine Academy Ibadan</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="pricing">
+            <h2>Simple, Transparent Pricing</h2>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3>Standard</h3>
+                    <p class="price">₦22,500 per student/term</p>
+                    <ul>
+                        <li>Core management features</li>
+                        <li>Basic reporting</li>
+                        <li>Email support</li>
+                    </ul>
+                    <a href="#contact" class="pricing-cta">Get Started</a>
+                </div>
+                <div class="pricing-card featured">
+                    <h3>Premium</h3>
+                    <p class="price">₦27,500 per student/term</p>
+                    <ul>
+                        <li>All Standard features</li>
+                        <li>Advanced analytics</li>
+                        <li>Priority support</li>
+                        <li>Custom integrations</li>
+                    </ul>
+                    <a href="#contact" class="pricing-cta">Contact Sales</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="platform-stats">
+            <h2>Growing Educational Impact</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <svg class="bx--icon">
+                            <use href="#icon--education"></use>
+                        </svg>
+                    </div>
+                    <div class="stat-content">
+                        <h3>70+</h3>
+                        <p>Schools</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <svg class="bx--icon">
+                            <use href="#icon--user"></use>
+                        </svg>
+                    </div>
+                    <div class="stat-content">
+                        <h3>8,000+</h3>
+                        <p>Students</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <svg class="bx--icon">
+                            <use href="#icon--group"></use>
+                        </svg>
+                    </div>
+                    <div class="stat-content">
+                        <h3>50+</h3>
+                        <p>Staff Members</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2>Ready to Transform Your School?</h2>
+            <p>Book a personalized demo to see how MyEduFusion can benefit your school</p>
+            <div class="contact-info">
+                <p>📧 sales@myedufusion.ng</p>
+                <p>📞 0800 123 4567</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>MyEduFusion</h3>
+                <p>Transforming school management across Nigeria</p>
+            </div>
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <p>Email: info@myedufusion.ng</p>
+                <p>Phone: 0800 123 4567</p>
+            </div>
+            <div class="footer-section">
+                <h3>Legal</h3>
+                <ul>
+                    <li><a href="#privacy">Privacy Policy</a></li>
+                    <li><a href="#terms">Terms of Service</a></li>
+                    <li><a href="#gdpr">GDPR Compliance</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 MyEduFusion. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Demo Request Modal -->
+    <div id="demoModal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <h2>Book a Demo</h2>
+            <form id="demoForm">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" required class="bx--text-input">
+                </div>
+                <div class="form-group">
+                    <label for="email">School Email</label>
+                    <input type="email" id="email" name="email" required class="bx--text-input">
+                </div>
+                <div class="form-group">
+                    <label for="school">School Name</label>
+                    <input type="text" id="school" name="school" required class="bx--text-input">
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" required class="bx--text-input">
+                </div>
+                <div class="form-group">
+                    <label for="message">Additional Information</label>
+                    <textarea id="message" name="message" class="bx--text-area"></textarea>
+                </div>
+                <button type="submit" id="submitBtn" class="bx--btn bx--btn--primary">Submit</button>
+                <!-- Add a loading spinner -->
+                <div id="loadingSpinner" style="display:none;">
+                    <span>Submitting...</span> <span class="spinner"></span>
+                    <!-- Add a spinner icon or custom animation here -->
+                </div>
+
+                <!-- Feedback message area -->
+                <div id="feedbackMessage" style="display:none;"></div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Existing slider code
+            const slides = document.querySelectorAll('.slide');
+            const dots = document.querySelectorAll('.slider-dot');
+            let currentSlide = 0;
+            const slideInterval = 5000;
+
+            function showSlide(n) {
+                slides[currentSlide].classList.remove('active');
+                dots[currentSlide].classList.remove('active');
+                currentSlide = (n + slides.length) % slides.length;
+                slides[currentSlide].classList.add('active');
+                dots[currentSlide].classList.add('active');
+            }
+
+            function nextSlide() {
+                showSlide(currentSlide + 1);
+            }
+
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => showSlide(index));
+            });
+
+            setInterval(nextSlide, slideInterval);
+
+            // Modal functionality
+            const modal = document.getElementById('demoModal');
+            const modalClose = document.querySelector('.modal-close');
+            const demoForm = document.getElementById('demoForm');
+            const demoButtons = document.querySelectorAll('.bx--btn--primary, .cta-button');
+
+            function openModal() {
+                modal.classList.add('show');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeModal() {
+                modal.classList.remove('show');
+                document.body.style.overflow = '';
+            }
+
+            // Add click handlers to all demo buttons
+            demoButtons.forEach(button => {
+                if (button.textContent.toLowerCase().includes('demo')) {
+                    button.addEventListener('click', openModal);
+                }
+            });
+
+            // Close modal when clicking the close button or outside
+            modalClose.addEventListener('click', closeModal);
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    closeModal();
+                }
+            });
+
+            // Close modal with Escape key
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && modal.classList.contains('show')) {
+                    closeModal();
+                }
+            });
+
+            // Form submission
+            demoForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+
+                const submitBtn = document.getElementById('submitBtn');
+                const loadingSpinner = document.getElementById('loadingSpinner');
+                const feedbackMessage = document.getElementById('feedbackMessage');
+
+                // Show loading spinner and disable submit button
+                loadingSpinner.style.display = 'inline-block';
+                submitBtn.disabled = true;
+
+                // Hide previous feedback message
+                feedbackMessage.style.display = 'none';
+
+                const formData = new FormData(demoForm);
+
+                try {
+                    const res = await fetch('/submit', {
+                        method: 'POST',
+                        body: formData,
+                    });
+
+                    if (res.ok) {
+                        // Success - show feedback message
+                        feedbackMessage.style.display = 'block';
+                        feedbackMessage.className = 'success';
+                        feedbackMessage.textContent = 'Thank you for your interest! Our team will contact you shortly.';
+
+                        // Reset form
+                        demoForm.reset();
+                    } else {
+                        throw new Error('Something went wrong.');
+                    }
+                } catch (err) {
+                    console.error(err);
+
+                    // Error - show feedback message
+                    feedbackMessage.style.display = 'block';
+                    feedbackMessage.className = 'error';
+                    feedbackMessage.textContent = 'Failed to submit. Please try again later.';
+                } finally {
+                    // Hide the loading spinner and re-enable the submit button
+                    loadingSpinner.style.display = 'none';
+                    submitBtn.disabled = false;
+                }
+            });
+
+            // Initialize Carbon components
+            if (typeof CarbonComponents !== 'undefined') {
+                CarbonComponents.settings.disableAutoInit = false;
+            }
+
+            // Scroll animations
+            const observerOptions = {
+                threshold: 0.2,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.feature-card, .benefit-card').forEach(card => {
+                observer.observe(card);
+            });
+        });
+    </script>
+</body>
+
+</html>
