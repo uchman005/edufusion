@@ -12,6 +12,7 @@ new Elysia()
   )
   .use(html())
   .get("/", () => Bun.file("./public/index.html"))
+  .get("/dashboard",()=> Bun.file("./public/dashboard.html"))
   .post(
     "/submit",
     async ({ body }) => {
