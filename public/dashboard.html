@@ -138,30 +138,29 @@
 
       <div class="row g-4 p-4 ">
 
-
         <!-- Charts Section -->
         <div class="row g-4">
           <div class="col-md-6">
             <div class="card">
               <div class="card-header">Gender Distribution</div>
               <div class="card-body">
-                <canvas id="genderChart" height="200"></canvas>
+                <canvas id="genderChart" height="100"></canvas>
               </div>
             </div>
           </div>
 
           <div class="col-md-6">
             <div class="card">
-              <div class="card-header">Income Over 5 Years (₦)</div>
+              <div class="card-header">Revenue Chart</div>
               <div class="card-body">
-                <canvas id="incomeChart" height="200"></canvas>
+                <canvas id="incomeChart" height="250"></canvas>
               </div>
             </div>
           </div>
         </div>
 
         <footer class="text-center mt-5 text-muted">
-          <small>© 2022–2025 Designed by Godwin Udu</small>
+        <small>© 2022–2025 All rights reserved</small>
         </footer>
       </div>
     </div>
@@ -194,41 +193,65 @@
         }
       });
 
-      // Bar chart for income growth
-      const incomeCtx = document.getElementById('incomeChart').getContext('2d');
+      const years = [2021, 2022, 2023, 2024, "2025 (Q2)"];
+      const total = 540000000;
 
-      const yearlyStudentCounts = [700, 1200, 2500, 4000, 8724];
-      const incomeData = yearlyStudentCounts.map(count => count * 22700 * 3);
+      const revenues = [];
+      revenues.push(total * 0.08);
+      revenues.push(total * 0.12);
+      revenues.push(total * 0.20);
+      revenues.push(total * 0.30);
+      revenues.push(total * 0.10);
 
-      new Chart(incomeCtx, {
+      // Create the chart
+      const ctx = document.getElementById('incomeChart').getContext('2d');
+      new Chart(ctx, {
         type: 'bar',
         data: {
-          labels: ['2021', '2022', '2023', '2024', '2025'],
+          labels: years,
           datasets: [{
-            label: 'Income (₦)',
-            data: incomeData,
-            backgroundColor: '#4caf50'
+            label: 'Revenue (₦)',
+            data: revenues,
+            backgroundColor: [
+              'rgba(75, 192, 192, 0.5)',   // 2021 - Seed stage
+              'rgba(54, 162, 235, 0.5)',   // 2022 - Early growth
+              'rgba(153, 102, 255, 0.5)',  // 2023 - Scale-up
+              'rgba(255, 159, 64, 0.5)',   // 2024 - Expansion
+              'rgba(46, 204, 113, 0.5)'    // 2025 - Current Growth
+            ],
+            borderColor: [
+              'rgba(75, 192, 192, 1)',
+              'rgba(54, 162, 235, 1)',
+              'rgba(153, 102, 255, 1)',
+              'rgba(255, 159, 64, 1)',
+              'rgba(46, 204, 113, 1)'
+            ],
+            borderWidth: 1
           }]
         },
         options: {
-          animation: {
-            duration: 1000,
-            delay: (context) => context.dataIndex * 300
-          },
+          responsive: true,
           scales: {
             y: {
               beginAtZero: true,
               ticks: {
-                callback: value => '₦' + value.toLocaleString()
+                callback: function (value) {
+                  return '₦' + (value / 1000000).toFixed(1) + 'M';
+                }
               }
             }
           },
-          responsive: true,
           plugins: {
-            legend: { display: false }
+            tooltip: {
+              callbacks: {
+                label: function (context) {
+                  return '₦' + (context.raw / 1000000).toFixed(2) + 'M';
+                }
+              }
+            }
           }
         }
-      });
+      });   
     </script>
 </body>
 
