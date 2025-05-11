@@ -1,6 +1,6 @@
 import html from "@elysiajs/html";
 import staticPlugin from "@elysiajs/static";
-import Elysia, { t } from "elysia";
+import Elysia, { t, file } from "elysia";
 import sendMail from "./mail";
 
 new Elysia()
@@ -11,8 +11,8 @@ new Elysia()
     })
   )
   .use(html())
-  .get("/", () => Bun.file("./public/index.html"))
-  .get("/dashboard",()=> Bun.file("./public/dashboard.html"))
+  .get("/", () => file("./public/index.html"))
+  .get("/dashboard",()=> file("./public/dashboard.html"))
   .post(
     "/submit",
     async ({ body }) => {
